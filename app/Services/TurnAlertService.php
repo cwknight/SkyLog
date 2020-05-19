@@ -6,12 +6,11 @@ use App\Turn;
 
 class TurnAlertService
 {
-    public function updateTurn($request)
+    public function updateTurn($values)
     {
-        $values = json_decode($request->getBody());
-        $gameName = $values->value1;
-        $playerName = $values->value2;
-        $turnNumber = $values->value3;
+        $gameName = $values->get('value1');
+        $playerName = $values->get('value2');
+        $turnNumber = $values->get('value3');
         $this->newTurn($gameName, $playerName, $turnNumber);
     }
 
